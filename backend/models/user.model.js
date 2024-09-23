@@ -1,19 +1,16 @@
 import mongoose from 'mongoose';
 
-const productSchema = new mongoose.Schema({
-  name: {
+const userSchema = new mongoose.Schema({
+  username: {
     type: String,
     required: true,
   },
-  image: {
-    type: String,
-    required: true,
-  },
-  description: {  // Correct spelling here
+  
+  email: {  // Correct spelling here
     type: String,
     required: true,  // Validation error is happening because this field is missing in the request body
   },
-  price: {
+  password: {
     type: Number,
     required: true,
   },

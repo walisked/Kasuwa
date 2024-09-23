@@ -2,12 +2,6 @@ import mongoose from "mongoose";
 import Product from "../models/product.model.js"; // Ensure correct import
 
 // Utility function to validate product fields
-const validateProductFields = (product) => {
-  if (!product.name || !product.image) {
-    return "Please provide both 'name' and 'image' fields.";
-  }
-  return null;
-};
 
 // GET: Fetch all products
 export const getProducts = async (req, res) => {
@@ -23,9 +17,8 @@ export const getProducts = async (req, res) => {
 // POST: Create a new product
 export const createProduct = async (req, res) => {
   const product = req.body;
-  const validationError = validateProductFields(product);
 
-  if (validationError) {
+  if (!product.name || !product.price || !product.image) {
     return res.status(400).json({ success: false, message: validationError });
   }
 
